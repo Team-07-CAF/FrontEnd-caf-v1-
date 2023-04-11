@@ -1,22 +1,27 @@
 import React, { createContext, useState } from "react";
 import { IAuthProvider, IContext, IUser } from "./type";
+import { LoginRequest } from "./util";
 
 export const AuthContext = createContext<IContext>({} as IContext)
 
-export const AutheProvider = ({ children}: IAuthProvider) => {
-   const [user, setUser] = useState<IUser | null>()
+export const AutheProvider = ({ children }: IAuthProvider) => {
+  const [user, setUser] = useState<IUser | null>()
 
-   async function authenticate (email: string, password: string) {
+  async function authenticate(email: string, password: string) {
+    const response = await LoginRequest(email, password)
 
-   }
+    const payload = {token: response.token, email }
 
-   function logout () {
+    setUser(payload);
+  }
 
-   }
+  function logout() {
+    setUser(null);
+  }
 
-   return (
-    <AuthContext.Provider value={{...user, authenticate, logout }}>
-        {children}
+  return (
+    <AuthContext.Provider value={{ ...user, authenticate, logout }}>
+      {children}
     </AuthContext.Provider>
-   )
+  )
 }
