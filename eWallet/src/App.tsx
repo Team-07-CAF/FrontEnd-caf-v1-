@@ -1,10 +1,20 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { AutheProvider } from "./context/authProvider"
 
 function App() {
 
   return (
-    <div>
-      <p>Hello World!</p>
-    </div>
+    <AutheProvider>
+      <BrowserRouter>
+        <Routes>
+
+          <Route path='/home' />
+          <Route path='/login' />
+          <Route path='/profile' />
+          
+        </Routes>
+      </BrowserRouter>
+    </AutheProvider>
   )
 }
 
