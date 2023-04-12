@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { AutheProvider } from "./context/authProvider"
 import { ProtectedLayout } from "./components/protectedLayout"
 
@@ -13,10 +13,12 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path='/home' element={<Home />}/>
+          <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
           
           <Route path='/profile' element={<ProtectedLayout><Profile /></ProtectedLayout>}/>
+
+          <Route path='*' element={<Navigate to='/' />}/>
           
         </Routes>
       </BrowserRouter>
