@@ -1,7 +1,7 @@
 import { Button, Col, Form, Input, Row, message } from 'antd'
 import React from 'react'
 import { useAuth } from '../../context/authProvider/useAuth'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const auth = useAuth();
@@ -20,6 +20,7 @@ function Login() {
   }
 
   return (
+    <>
     <Row
       justify='center'
       align='middle'
@@ -57,6 +58,7 @@ function Login() {
         </Form>
       </Col>
     </Row>
+    </>
   )
 }
 
