@@ -6,9 +6,11 @@ import Profile from "./pages/profile"
 import Login from "./pages/login"
 import Home from "./pages/home"
 
+
 function App() {
 
   return (
+    
     <AutheProvider>
       <BrowserRouter>
         <Routes>
