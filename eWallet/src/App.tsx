@@ -5,6 +5,7 @@ import { ProtectedLayout } from "./components/protectedLayout"
 import Profile from "./pages/profile"
 import Login from "./pages/login"
 import Home from "./pages/home"
+import Register from "./pages/register"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
 
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
           
           <Route path='/profile' element={<ProtectedLayout><Profile /></ProtectedLayout>}/>
 
