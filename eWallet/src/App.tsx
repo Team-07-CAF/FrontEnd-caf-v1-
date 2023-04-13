@@ -1,10 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { AutheProvider } from "./context/authProvider"
 import { ProtectedLayout } from "./components/protectedLayout"
 
 import Profile from "./pages/profile"
 import Login from "./pages/login"
 import Home from "./pages/home"
+import Register from "./pages/register"
 
 
 function App() {
@@ -15,10 +16,13 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path='/home' element={<Home />}/>
+          <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
           
           <Route path='/profile' element={<ProtectedLayout><Profile /></ProtectedLayout>}/>
+
+          <Route path='*' element={<Navigate to='/' />}/>
           
         </Routes>
       </BrowserRouter>
