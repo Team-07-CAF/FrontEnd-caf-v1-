@@ -88,23 +88,6 @@ const Register: React.FC = () => {
     console.log('Received values of form: ', values);
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
-
-  const suffixSelector = (
-    <Form.Item name="suffix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="USD">$</Option>
-        <Option value="CNY">¥</Option>
-      </Select>
-    </Form.Item>
-  );
 
   return (
     <Form
@@ -112,8 +95,7 @@ const Register: React.FC = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{ residence: ['zhejiang', 'hangzhou', 'xihu'], prefix: '86' }}
-      style={{ maxWidth: 600 }}
+      style={{ marginTop: '60px', maxWidth: 600, }}
       scrollToFirstError
     >
 
@@ -212,11 +194,11 @@ const Register: React.FC = () => {
           Termos de Privacidade
         </Checkbox>
         <ModalComponent
-        titleButton={'Termo...'} 
-        modalText={<Termo />} 
-        modalTitle={'POLÍTICA DE PRIVACIDADE'} 
-        buttonStyle={{background: 'none', color: 'red', boxShadow: 'none'}}
-         />
+          titleButton={'Termo...'}
+          modalText={<Termo />}
+          modalTitle={'POLÍTICA DE PRIVACIDADE'}
+          buttonStyle={{ background: 'none', color: 'red', boxShadow: 'none' }}
+        />
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">

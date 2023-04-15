@@ -1,7 +1,8 @@
 import React from "react";
-import { Header, HeaderList, NavBar, MainLogo, Links, MainContent } from "./Style.Header";
+import { Header, HeaderList, NavBar, MainLogo, Links } from "./Style.Header";
 import projectLogo from "../../../assets/images/projectLogo.svg"
-import { GlobalStyle } from "../../Styles/reset_Css";
+import { GlobalStyle } from "../../Styles/General_CSS";
+
 
 function MainHeader() {
   return (
@@ -11,10 +12,10 @@ function MainHeader() {
       <NavBar>
         <HeaderList>
           <li>
-            <Links href="#">Registre-se</Links>
+            <Links href="/register">Registre-se</Links>
           </li>
           <li>
-            <Links href="#">Login</Links>
+            <Links href="/login">Login</Links>
           </li>
           <li>
             <Links href="#">Sobre</Links>
