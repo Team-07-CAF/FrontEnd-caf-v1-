@@ -28,7 +28,7 @@ function Login() {
           style={StyleForm}
         >
 
-          <h2 style={{ color: "#ffffff", textAlign: "center", marginTop: "2rem" }}>Login</h2>
+          <h2 style={{ color: "#ffffff", textAlign: "center", marginTop: "1rem", fontSize: '1.5rem' }}>Login</h2>
           <Form.Item name='email'>
             <p style={{color: '#ffffff'}}>E-mail</p><Input placeholder="Input E-mail" prefix={<UserOutlined />} />
           </Form.Item>
