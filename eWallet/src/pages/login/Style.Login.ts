@@ -3,8 +3,9 @@ import { Button } from 'antd';
 export const StyleForm = {
   backgroundColor: "#19181F",
   borderRadius: "15px",
+  margin: "1rem",
   height: "400px",
-  // width: '400px',
+  width: '92%',
   padding: "1rem",
   boxShadow: "0px 0px 5px rgba(250, 250, 250, 9)",
 };
@@ -29,6 +30,7 @@ export const StyleButton = {
   border: "none",
   boxShadow: "none",
   transition: "all 0.2s ease-in-out",
+  width: "8rem",
 
   ":hover": {
     transform: "translateY(-3px)",

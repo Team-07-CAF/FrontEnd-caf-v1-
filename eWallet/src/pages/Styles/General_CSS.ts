@@ -32,6 +32,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	font-family: 'Comfortaa', cursive;
 	line-height: 1;
 }
 ol, ul {
