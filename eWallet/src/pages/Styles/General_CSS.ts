@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	font-family: 'Comfortaa', cursive;
+	font-family: 'merriweather', 'sans-serife';
 	line-height: 1;
 }
 ol, ul {
