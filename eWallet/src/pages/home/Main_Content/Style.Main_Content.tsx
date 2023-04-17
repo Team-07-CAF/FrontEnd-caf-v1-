@@ -8,10 +8,11 @@ export const MainContentHome = styled.div`
   align-items: end;
   justify-items: center;
   padding-bottom: 37px;
+  margin:auto;
 
   background-image: url(${backGroundHomeImage});
-  width: 1920px;
-  height: 760px;
+  max-width: 1920px;
+  height: 700px;
 `;
 
 export const FirstSection = styled.section`
