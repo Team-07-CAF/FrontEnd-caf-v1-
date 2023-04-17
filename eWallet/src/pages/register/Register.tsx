@@ -1,85 +1,7 @@
-import type { CascaderProps } from 'antd';
-import {
-  Button,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  Row,
-  Select,
-} from 'antd';
-import React, { useState } from 'react';
-import ModalComponent from '../../components/modal';
+import { Button, Checkbox, Col, Form, Input, Row, Modal } from 'antd';
+import React from 'react';
 import Termo from './Termo';
-
-
-
-const { Option } = Select;
-
-interface DataNodeType {
-  value: string;
-  label: string;
-  children?: DataNodeType[];
-}
-
-const residences: CascaderProps<DataNodeType>['options'] = [
-  {
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [
-      {
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [
-          {
-            value: 'xihu',
-            label: 'West Lake',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [
-      {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          },
-        ],
-      },
-    ],
-  },
-];
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
-};
-
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+import { StyleForm, StyleRow } from './Style.Register';
 
 const Register: React.FC = () => {
   const [form] = Form.useForm();
@@ -88,124 +10,121 @@ const Register: React.FC = () => {
     console.log('Received values of form: ', values);
   };
 
-
   return (
-    <Form
-      {...formItemLayout}
-      form={form}
-      name="register"
-      onFinish={onFinish}
-      style={{ marginTop: '60px', maxWidth: 600, }}
-      scrollToFirstError
-    >
+    <Row justify='center' align='middle' style={StyleRow}>
+      <Col xs={24} sm={12} md={8} lg={5}>
+        <Form
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          style={StyleForm}
+          scrollToFirstError
+        >
+          <Form.Item
+            name="nickname"
+            tooltip="What do you want others to call you?"
+            rules={[{ required: true, message: 'Por favor, insira seu nome completo!', whitespace: true }]}
+          >
+            <Input placeholder='Digite seu nome aqui.' />
+          </Form.Item>
 
-      <Form.Item
-        name="nickname"
-        label="Nome Completo"
-        tooltip="What do you want others to call you?"
-        rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
-      >
-        <Input />
-      </Form.Item>
+          <Form.Item
+            name="email"
+            rules={[
+              {
+                type: 'email',
+                message: 'Por favor, insira um e-mail válido!',
+              },
+              {
+                required: true,
+                message: 'Por favor, insira seu e-mail.',
+              },
+            ]}
+          >
+            <Input placeholder='Ex: email@email.com' />
+          </Form.Item>
 
-      <Form.Item
-        name="email"
-        label="E-mail"
-        rules={[
-          {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          },
-          {
-            required: true,
-            message: 'Please input your E-mail!',
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: 'Por favor, crie uma senha!',
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password placeholder='Ex: Abc@123' />
+          </Form.Item>
 
-      <Form.Item
-        name="password"
-        label="Password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
+          <Form.Item
+            name="confirm"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Por favor, confirme sua senha!',
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('As duas senhas que você digitou não correspondem!'));
+                },
+              }),
+            ]}
+          >
+            <Input.Password placeholder='Digite a senha novamente.' />
+          </Form.Item>
 
-      <Form.Item
-        name="confirm"
-        label="Confirm Password"
-        dependencies={['password']}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: 'Please confirm your password!',
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue('password') === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(new Error('The two passwords that you entered do not match!'));
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+          <Form.Item>
+            <Row gutter={24}>
+              <Col span={13}>
+                <Form.Item
+                  name="captcha"
+                  noStyle
+                  rules={[{ required: true, message: 'Por favor, insira o captcha que você obteve!' }]}
+                >
+                  <Input placeholder='Captcha' />
+                </Form.Item>
+              </Col>
+              <Col span={11}>
+                <Button>Confirme</Button>
+              </Col>
+            </Row>
+          </Form.Item>
 
-      <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-        <Row gutter={8}>
-          <Col span={12}>
-            <Form.Item
-              name="captcha"
-              noStyle
-              rules={[{ required: true, message: 'Please input the captcha you got!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Button>Get captcha</Button>
-          </Col>
-        </Row>
-      </Form.Item>
+          <Form.Item
+            name="agreement"
+            valuePropName="checked"
+            rules={[
+              {
+                validator: (_, value) =>
+                  value ? Promise.resolve() : Promise.reject('Você deve aceitar os termos.'),
+              },
+            ]}
+          >
+            <Checkbox>
+              <Modal
+                title="POLÍTICA DE PRIVACIDADE"
+                okText="Aceito"
+                cancelText="Não aceito"
+              >
+                <Termo />
+              </Modal>
+            </Checkbox>
+          </Form.Item>
 
-      <Form.Item
-        name="agreement"
-        valuePropName="checked"
-        rules={[
-          {
-            validator: (_, value) =>
-              value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
-          },
-        ]}
-        {...tailFormItemLayout}
-      >
-        <Checkbox>
-          Termos de Privacidade
-        </Checkbox>
-        <ModalComponent
-          titleButton={'Termo...'}
-          modalText={<Termo />}
-          modalTitle={'POLÍTICA DE PRIVACIDADE'}
-          buttonStyle={{ background: 'none', color: 'red', boxShadow: 'none' }}
-        />
-      </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Register
-        </Button>
-      </Form.Item>
-    </Form>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Registrar
+            </Button>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   );
 };
 
