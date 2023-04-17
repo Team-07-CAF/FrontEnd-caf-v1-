@@ -1,8 +1,8 @@
-import {FooterBox, SocialMedia} from '../Footer/Style.Footer';
-import instaIcon from '../../../assets/images/Insta.svg';
-import facebookIcon from '../../../assets/images/facebook.svg';
-import likedinICon from '../../../assets/images/linkedin.svg';
-import twitterIcon from '../../../assets/images/twitter.svg';
+import {FooterBox, SocialMedia} from './Style.Footer';
+import instaIcon from '../../assets/images/Insta.svg';
+import facebookIcon from '../../assets/images/facebook.svg';
+import likedinICon from '../../assets/images/linkedin.svg';
+import twitterIcon from '../../assets/images/twitter.svg';
 
 export const Footer = () => {
     return (

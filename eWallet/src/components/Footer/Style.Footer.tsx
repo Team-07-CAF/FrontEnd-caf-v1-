@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../Styles/General_CSS";
+import { Colors } from "../../pages/Styles/General_CSS";
 
 export const FooterBox = styled.footer`
   box-sizing: border-box;
