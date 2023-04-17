@@ -20,5 +20,5 @@ export const StyleButton = {
   borderRadius: "15px",
   border: "none",
   boxShadow: "none",
-  width: "8rem",
+  width: "6rem",
 };

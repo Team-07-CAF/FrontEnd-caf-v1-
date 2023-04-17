@@ -1,7 +1,8 @@
-import { Button, Checkbox, Col, Form, Input, Row, Modal } from 'antd';
+import { Button, Checkbox, Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import Termo from './Termo';
-import { StyleForm, StyleRow } from './Style.Register';
+import { StyleButton, StyleForm, StyleRow } from './Style.Register';
+import ModalComponent from '../../components/modal';
 
 const Register: React.FC = () => {
   const [form] = Form.useForm();
@@ -20,12 +21,14 @@ const Register: React.FC = () => {
           style={StyleForm}
           scrollToFirstError
         >
+          <h2 style={{ color: "#ffffff", textAlign: "center", fontSize: '1.5rem' }}>Cadastro</h2>
+          ,
           <Form.Item
             name="nickname"
             tooltip="What do you want others to call you?"
             rules={[{ required: true, message: 'Por favor, insira seu nome completo!', whitespace: true }]}
           >
-            <Input placeholder='Digite seu nome aqui.' />
+            <p style={{ color: "#ffffff" }}>Nome Completo:</p><Input placeholder='Digite seu nome aqui.' />
           </Form.Item>
 
           <Form.Item
@@ -41,7 +44,7 @@ const Register: React.FC = () => {
               },
             ]}
           >
-            <Input placeholder='Ex: email@email.com' />
+            <p style={{ color: "#ffffff" }}>E-mail:</p> <Input placeholder='Ex: email@email.com' />
           </Form.Item>
 
           <Form.Item
@@ -54,7 +57,7 @@ const Register: React.FC = () => {
             ]}
             hasFeedback
           >
-            <Input.Password placeholder='Ex: Abc@123' />
+            <p style={{ color: "#ffffff" }}>Senha:</p> <Input.Password placeholder='Ex: Abc@123' />
           </Form.Item>
 
           <Form.Item
@@ -76,7 +79,7 @@ const Register: React.FC = () => {
               }),
             ]}
           >
-            <Input.Password placeholder='Digite a senha novamente.' />
+            <p style={{ color: "#ffffff" }}>Confirme sua Senha:</p><Input.Password placeholder='Digite a senha novamente.' />
           </Form.Item>
 
           <Form.Item>
@@ -91,7 +94,7 @@ const Register: React.FC = () => {
                 </Form.Item>
               </Col>
               <Col span={11}>
-                <Button>Confirme</Button>
+                <Button style={StyleButton}>Confirme</Button>
               </Col>
             </Row>
           </Form.Item>
@@ -106,19 +109,25 @@ const Register: React.FC = () => {
               },
             ]}
           >
-            <Checkbox>
-              <Modal
-                title="POLÍTICA DE PRIVACIDADE"
-                okText="Aceito"
-                cancelText="Não aceito"
-              >
-                <Termo />
-              </Modal>
-            </Checkbox>
+            <Checkbox />
+
+            <ModalComponent
+              modalTitle={'POLÍTICA DE PRIVACIDADE'}
+              modalText={<Termo />}
+              buttonStyle={{
+                background: "none",
+                border: "none",
+                boxShadow: "none",
+                color: "#ff0000",
+              }}
+              titleButton={"Termo..."}
+            >
+              <Termo />
+            </ModalComponent>
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button style={StyleButton} type="primary" htmlType="submit">
               Registrar
             </Button>
           </Form.Item>

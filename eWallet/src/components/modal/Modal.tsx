@@ -7,6 +7,7 @@ interface ModalComponentProps {
   modalStyle?: React.CSSProperties;
   buttonStyle?: React.CSSProperties;
   titleButton?: string;
+  children: React.ReactNode;
 }
 
 const ModalComponent: React.FC<ModalComponentProps> = ({ titleButton, buttonStyle, modalTitle, modalText, modalStyle }) => {
