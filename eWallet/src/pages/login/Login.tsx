@@ -4,6 +4,8 @@ import { useAuth } from '../../context/authProvider/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { UserOutlined } from '@ant-design/icons';
 import { StyleButton, StyleForm, StyleRow } from './Style.Login';
+import MainHeader from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
 
 function Login() {
   const auth = useAuth();
@@ -19,6 +21,8 @@ function Login() {
   }
 
   return (
+    <div>
+    <MainHeader />
     <Row justify='center' align='middle' style={StyleRow}>
       <Col xs={24} sm={12} md={8} lg={5}>
         <Form
@@ -46,6 +50,9 @@ function Login() {
         </Form>
       </Col>
     </Row>
+    <Footer />
+    </div>
+    
   )
 }
 

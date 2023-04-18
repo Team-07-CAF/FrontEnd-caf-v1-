@@ -32,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	font-family: 'Comfortaa', cursive;
+	font-family: 'merriweather', 'sans-serife';
 	line-height: 1;
 }
 ol, ul {
@@ -51,9 +51,21 @@ table {
 	border-spacing: 0;
 }
 
+button {
+  background-color: transparent;
+  border-width: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
 `
 
 export const Colors = {
+	white: '#FFFFFF',
 	primaryColor: '#19181F',
 	secondaryColor: '#1E1E26',
 	
