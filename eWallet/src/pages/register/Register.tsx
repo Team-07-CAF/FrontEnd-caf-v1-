@@ -1,8 +1,7 @@
 import { Button, Checkbox, Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import Termo from './Termo';
-import { StyleButton, StyleForm, StyleRow } from './Style.Register';
-import ModalComponent from '../../components/modal';
+import { StyleForm, StyleRow } from './Style.Register';
 
 const Register: React.FC = () => {
   const [form] = Form.useForm();
@@ -11,7 +10,10 @@ const Register: React.FC = () => {
     console.log('Received values of form: ', values);
   };
 
+
   return (
+    <div>
+      <MainHeader />
     <Row justify='center' align='middle' style={StyleRow}>
       <Col xs={24} sm={12} md={8} lg={5}>
         <Form
@@ -134,6 +136,8 @@ const Register: React.FC = () => {
         </Form>
       </Col>
     </Row>
+    <Footer />
+    </div>
   );
 };
 
