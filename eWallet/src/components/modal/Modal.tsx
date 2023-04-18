@@ -29,7 +29,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({ titleButton, buttonStyl
       <Modal
         title={modalTitle}
         centered
-        visible={modalOpen}
+        open={modalOpen}
         onOk={handleModalClose}
         onCancel={handleModalClose}
         style={modalStyle}

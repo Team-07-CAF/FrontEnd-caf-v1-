@@ -1,7 +1,8 @@
 import { Button, Checkbox, Col, Form, Input, Row } from 'antd';
 import React from 'react';
 import Termo from './Termo';
-import { StyleForm, StyleRow } from './Style.Register';
+import { StyleButton, StyleForm, StyleRow } from './Style.Register';
+import ModalComponent from '../../components/modal';
 
 const Register: React.FC = () => {
   const [form] = Form.useForm();
@@ -10,10 +11,7 @@ const Register: React.FC = () => {
     console.log('Received values of form: ', values);
   };
 
-
   return (
-    <div>
-      <MainHeader />
     <Row justify='center' align='middle' style={StyleRow}>
       <Col xs={24} sm={12} md={8} lg={5}>
         <Form
@@ -24,17 +22,22 @@ const Register: React.FC = () => {
           scrollToFirstError
         >
           <h2 style={{ color: "#ffffff", textAlign: "center", fontSize: '1.5rem' }}>Cadastro</h2>
-          ,
           <Form.Item
+            labelCol={{ span: 24 }}
+            style={{ margin: "5px 0" }}
             name="nickname"
-            tooltip="What do you want others to call you?"
-            rules={[{ required: true, message: 'Por favor, insira seu nome completo!', whitespace: true }]}
+            rules={[{ required: true, message: 'Por favor, insira seu nome completo!', whitespace: true },]}
           >
-            <p style={{ color: "#ffffff" }}>Nome Completo:</p><Input placeholder='Digite seu nome aqui.' />
+            <div>
+              <label style={{ color: '#ffffff' }}>Nome Completo:</label>
+              <Input placeholder="Digite seu nome aqui." />
+            </div>
           </Form.Item>
 
           <Form.Item
             name="email"
+            labelCol={{ span: 24 }}
+            style={{ margin: "5px 0" }}
             rules={[
               {
                 type: 'email',
@@ -46,11 +49,16 @@ const Register: React.FC = () => {
               },
             ]}
           >
-            <p style={{ color: "#ffffff" }}>E-mail:</p> <Input placeholder='Ex: email@email.com' />
+            <div>
+              <label style={{ color: '#ffffff' }}>E-mail:</label>
+              <Input placeholder='Ex: email@email.com' />
+            </div>
           </Form.Item>
 
           <Form.Item
             name="password"
+            style={{ margin: "5px 0" }}
+            labelCol={{ span: 24 }}
             rules={[
               {
                 required: true,
@@ -59,11 +67,15 @@ const Register: React.FC = () => {
             ]}
             hasFeedback
           >
-            <p style={{ color: "#ffffff" }}>Senha:</p> <Input.Password placeholder='Ex: Abc@123' />
+            <div>
+              <label style={{ color: '#ffffff' }}>Senha:</label>
+              <Input.Password placeholder='Ex: Abc@123' />
+            </div>
           </Form.Item>
 
           <Form.Item
             name="confirm"
+            labelCol={{ span: 24 }}
             dependencies={['password']}
             hasFeedback
             rules={[
@@ -81,7 +93,10 @@ const Register: React.FC = () => {
               }),
             ]}
           >
-            <p style={{ color: "#ffffff" }}>Confirme sua Senha:</p><Input.Password placeholder='Digite a senha novamente.' />
+            <div>
+              <label style={{ color: '#ffffff' }}>Confirme a Senha:</label>
+              <Input.Password placeholder='Digite a senha novamente.' />
+            </div>
           </Form.Item>
 
           <Form.Item>
@@ -95,9 +110,8 @@ const Register: React.FC = () => {
                   <Input placeholder='Captcha' />
                 </Form.Item>
               </Col>
-              <Col span={11}>
-                <Button style={StyleButton}>Confirme</Button>
-              </Col>
+              <Button style={StyleButton}>Confirme</Button>
+
             </Row>
           </Form.Item>
 
@@ -111,33 +125,36 @@ const Register: React.FC = () => {
               },
             ]}
           >
-            <Checkbox />
-
-            <ModalComponent
-              modalTitle={'POLÍTICA DE PRIVACIDADE'}
-              modalText={<Termo />}
-              buttonStyle={{
-                background: "none",
-                border: "none",
-                boxShadow: "none",
-                color: "#ff0000",
-              }}
-              titleButton={"Termo..."}
-            >
-              <Termo />
-            </ModalComponent>
+            <div>
+              <Checkbox />
+              <ModalComponent
+                modalTitle={'POLÍTICA DE PRIVACIDADE'}
+                modalText={<Termo />}
+                buttonStyle={{
+                  background: "none",
+                  border: "none",
+                  boxShadow: "none",
+                  color: "#00ff00",
+                }}
+                titleButton={"Termo de Privacidade . . ."}
+              >
+                <div>
+                <Termo />
+                </div>
+              </ModalComponent>
+            </div>
           </Form.Item>
 
           <Form.Item>
-            <Button style={StyleButton} type="primary" htmlType="submit">
-              Registrar
-            </Button>
+            <Row justify='center' align='middle'>
+              <Button style={StyleButton} type="primary" htmlType="submit">
+                Registrar
+              </Button>
+            </Row>
           </Form.Item>
         </Form>
       </Col>
     </Row>
-    <Footer />
-    </div>
   );
 };
 
