@@ -2,6 +2,7 @@ import React from "react";
 import { Header, HeaderList, NavBar, MainLogo, Links } from "./Style.Header";
 import projectLogo from "../../assets/images/projectLogo.svg"
 import { GlobalStyle } from "../../pages/Styles/General_CSS";
+import { Link } from "react-router-dom";
 
 
 function MainHeader() {
@@ -12,7 +13,7 @@ function MainHeader() {
       <NavBar>
         <HeaderList>
           <li>
-            <Links href="/register">Registre-se</Links>
+            <Link to="/register">Registre-se</Link>
           </li>
           <li>
             <Links href="/login">Login</Links>
