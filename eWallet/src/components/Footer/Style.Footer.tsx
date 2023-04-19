@@ -4,7 +4,7 @@ import { Colors } from "../../pages/Styles/General_CSS";
 export const FooterBox = styled.footer`
   box-sizing: border-box;
   max-width: 1920px;
-  height: 170px;
+  height: 100px;
   background: ${Colors.primaryColor};
   display: flex;
   justify-content: end;
