@@ -17,7 +17,7 @@ export const Header = styled.header`
 export const NavBar = styled.nav`
   display: flex;
   align-items: center;
-  margin-left: 10%;
+  margin-left: 20%;
   padding: 2.25em 0;
   width: 80%;
 
